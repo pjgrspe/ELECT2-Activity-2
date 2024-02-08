@@ -8,6 +8,13 @@ namespace Activity2.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        private readonly List<TodoItem> _todoItems = new List<TodoItem>
+        {
+            new TodoItem { Id = 1, Name = "Task1", IsCompleted = false },
+            new TodoItem { Id = 2, Name = "Task2", IsCompleted = true },
+            new TodoItem { Id = 3, Name = "Task3", IsCompleted = false }
+        };
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -15,7 +22,7 @@ namespace Activity2.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(_todoItems);
         }
 
         public IActionResult Privacy()
@@ -28,5 +35,6 @@ namespace Activity2.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }

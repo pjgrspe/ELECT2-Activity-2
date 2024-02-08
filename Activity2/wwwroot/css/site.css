@@ -20,3 +20,45 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.loading-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 4px solid #f3f3f3; /* Light gray border */
+    border-top: 4px solid #3498db; /* Blue border on top */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite; /* Rotate animation */
+    z-index: 9999; /* Ensure it's on top of other content */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.animated-table {
+    opacity: 0; /* Initially hide the table */
+}
+
+.animated-table.fadeIn {
+    animation: fadeIn 1s ease-in-out forwards;
+}

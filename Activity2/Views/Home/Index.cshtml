@@ -1,8 +1,45 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<TodoItem>
+@{
+    ViewData["Title"] = "To-Do List";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <div class="loading-spinner"></div>
+    <h2>To-Do List</h2>
+
+    <table class="table table-striped animated-table">
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@(item.IsCompleted ? "Completed" : "Pending")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="modal"><!-- Place at bottom of page --></div>
 </div>
+
+<script>
+    window.addEventListener('load', function () {
+        setTimeout(function () {
+            var spinner = document.querySelector('.loading-spinner');
+            spinner.style.display = 'none';
+        }, 500);
+        
+    });
+</script>
+
+<script>
+    window.addEventListener('load', function () {
+        var table = document.querySelector('.animated-table');
+        table.classList.add('fadeIn');
+    });
+</script>
